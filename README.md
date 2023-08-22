@@ -18,22 +18,22 @@ This Python script categorizes a list of websites based on their content using t
    pip install openai requests beautifulsoup4 openpyxl pandas
    ```
 
-2. Replace `openai.api_key` with your API key.
+2. Clone the repo by `git clone https://github.com/maxcodl/Website_Categorizer.git`
 
-3. Add websites to `websites` list.
+3. Replace `openai.api_key` with your API key.
 
-4. Run the script:
+4. Replace `your_ip` with your IP.
+
+5. Add websites to `websites` list.
+
+6. Run the script:
 
    ```bash
-   python bulk_test.py
+   python app.py
    ```
 
-   Script processes websites, generates categories, saves data.
+Script processes websites, generates categories, saves data.
 
-5. To upload data to GitHub:
-
-   - Replace repository URL in script.
-   - Run script to save data to repository.
 
 ## Flask Web App (Optional)
 
@@ -60,10 +60,5 @@ For a web interface:
 ## Credits
 
 Uses GPT-3.5 from OpenAI for website categorization.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-```
 
 Make sure to replace `website_categorization.py` with your actual script name, and create the Flask app code in a separate `app.py` file.
