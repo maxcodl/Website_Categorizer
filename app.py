@@ -83,5 +83,6 @@ def categorize():
         return "Failed to extract text from the website"
 
 
+# Run the Flask app
 if __name__ == '__main__':
-    app.run(host='your_ip', port=5000)
+    app.run()
