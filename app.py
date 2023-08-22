@@ -7,7 +7,7 @@ from urllib.parse import urlparse
 app = Flask(__name__)
 
 # Set your OpenAI API key
-openai.api_key = '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'
+openai.api_key = 'YOUR_OPENAI_API_KEY'
 model_engine = "gpt-3.5-turbo-16k"
 
 
