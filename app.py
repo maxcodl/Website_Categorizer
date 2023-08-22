@@ -46,20 +46,30 @@ def categorize():
 
     if text_content is not None:
         # Create a prompt for OpenAI categorization
-        prompt = f"this is a website {url}. and this is the content i extracted from the website: [{text_content}]. Can you tell which category this website belongs to by reading the content from the website? for example if the url is google.com then your answer should be [search engine] in a json format"
-
+        prompt = (
+        f"This is a website [{url}], and this is the content I extracted from the website: [{text_content}]. "
+        "Can you determine which category this website belongs to based on the content? "
+        "I would like the result in JSON format as follows: "
+        "'website': 'url', 'category': 'category_name'. "
+        "Please choose a category from the list provided below for accurate classification: "
+        "(Technology, Startup, Sales, Health, Business, Education, Finance, Web3, Human Resource, Generative AI, Others, Economy, Gen AI, HR, Law, Management, Productivity, Sales & Marketing, Stocks, Tech, VC & PE, Adult). "
+        "You can select multiple categories if you are familiar with the website. "
+        "You may also disregard the extracted data if necessary. "
+        "IMPORTANT: While showing the result, only show the json."
+    )
         # Log the prompt being sent to OpenAI
         print("Prompt to OpenAI:", prompt)
 
         # Use OpenAI to generate the category
         response = openai.ChatCompletion.create(
         model=model_engine,
-        temperature=0.7,
-        top_p=0,
-        max_tokens=50,
+        temperature=0.8,
+        top_p=1,
+        max_tokens=30,
         presence_penalty=0,
-        frequency_penalty=0,
-        messages=[{"role": "system", "content": "You are an expert curator of LinkedIn Posts."},
+        frequency_penalty=0.57,
+        messages=[{"role": "system", "content": "You are an expert in website categorization."},
+                  {"role": "assistant", "content": "{'website': 'url', 'category': 'Finance'}"},
                   {"role": "user", "content": prompt}]
     )
 
@@ -74,4 +84,4 @@ def categorize():
 
 
 if __name__ == '__main__':
-    app.run(host='192.168.1.38', port=5000)
+    app.run(host='your_ip', port=5000)
