@@ -26,11 +26,9 @@ This Python script categorizes a list of websites based on their content using t
 
 6. Replace `openai.api_key` with your API key.
 
-7. Replace `your_ip` with your IP.
+7. Add websites to `websites` list.
 
-8. Add websites to `websites` list.
-
-9. Run the script:
+8. Run the script:
 
    ```bash
    python app.py
