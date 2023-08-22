@@ -43,8 +43,13 @@ def categorize():
 
     # Extract text content from the website
     text_content = extract_text_from_website(url)
-
+    
     if text_content is not None:
+        text_content = " ".join(text_content.split())
+            # Limit the text content to 500 words
+        word_limit = 500
+        if len(text_content.split()) > word_limit:
+            text_content = " ".join(text_content.split()[:word_limit])
         # Create a prompt for OpenAI categorization
         prompt = (
         f"This is a website [{url}], and this is the content I extracted from the website: [{text_content}]. "
