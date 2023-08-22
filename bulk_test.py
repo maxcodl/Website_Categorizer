@@ -71,8 +71,20 @@ for website in websites:
     text_content = extract_text_from_website(url)
     
     if text_content is not None:
-        prompt = f"this is a website [{url}]. and this is the content i extracted from the website: [{text_content}]. Can you tell which category this website belongs to by reading the content from the website? i want the result in a json format ('website': 'website_name', 'category': 'category_name') like the following.while picking the category, only use the ones provided below (Technology,Startup,Sales,Health,Business,Education,Finance,Web3,Human Resource,Generative AI,Others,Economy,Gen AI,HR,Law,Management,Productivity,Sales & Marketing,Stocks, Tech,VC & PE, Adult)"
-        
+        # Create a prompt for OpenAI categorization
+        prompt = (
+        f"This is a website [{url}], and this is the content I extracted from the website: [{text_content}]. "
+        "Can you determine which category this website belongs to based on the content? "
+        "I would like the result in JSON format as follows: "
+        "'website': 'url', 'category': 'category_name'. "
+        "Please choose a category from the list provided below for accurate classification: "
+        "(Technology, Startup, Sales, Health, Business, Education, Finance, Web3, Human Resource, Generative AI, Others, Economy, Gen AI, HR, Law, Management, Productivity, Sales & Marketing, Stocks, Tech, VC & PE, Adult). "
+        "You can select multiple categories if you are familiar with the website. "
+        "You may also disregard the extracted data if necessary. "
+        "IMPORTANT: While showing the result, only show the json."
+    )
+
+            
         # Use OpenAI to generate the category
         response = openai.ChatCompletion.create(
             model=model_engine,
