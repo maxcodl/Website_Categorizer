@@ -62,9 +62,13 @@ def categorize():
         # Function to check the extracted text for specific keywords and assign a category
         def categorize_based_on_keywords(text, categories_keywords):
             matched_categories = []
+            # Split the text into lowercased words
+            words = set(text.lower().split())
             for category, keywords in categories_keywords.items():
-                matched_keywords = [keyword for keyword in keywords if keyword.lower() in text.lower()]
+                # Check if each keyword is an entire word in the text
+                matched_keywords = [keyword for keyword in keywords if keyword.lower() in words]
                 if len(matched_keywords) >= 3:
+                    print(f"For category '{category}', found matching keywords: {matched_keywords}")
                     matched_categories.append(category)
                 if not matched_categories:
                     print("No keywords found in the text.")
