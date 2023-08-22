@@ -1,16 +1,17 @@
+
 # Website Categorization
 
-This Python script categorizes a list of websites based on their content using the GPT-3.5 language model from OpenAI. It extracts text content from each website, generates a category using GPT-3, and maps the generated category to predefined categories for better classification.
+This Python script and Flask web application categorize websites based on their content using the GPT-3.5 language model from OpenAI. It extracts text content from each website, generates a category using GPT-3, and maps the generated category to predefined categories for accurate classification.
 
 ## Features
 
 - Extracts text content from websites.
 - Generates categories using GPT-3.
 - Maps categories to predefined categories.
-- Saves categorized data in Excel.
-- Option to upload data to GitHub.
+- Provides both a command-line script and a Flask web interface.
+- Saves categorized data.
 
-## How to Use
+## How to Use the Command-Line Script
 
 1. Install required packages:
 
@@ -18,28 +19,27 @@ This Python script categorizes a list of websites based on their content using t
    pip install openai requests beautifulsoup4 openpyxl pandas
    ```
 
-2. Clone the repo
+2. Clone the repository:
 
    ```bash
    git clone https://github.com/maxcodl/Website_Categorizer.git
    ```
 
-6. Replace `openai.api_key` with your API key.
+3. Replace `'YOUR_OPENAI_API_KEY'` in the `app.py` script with your actual OpenAI API key.
 
-7. Add websites to `websites` list.
+4. Add websites to the `websites` list in the `app.py` script.
 
-8. Run the script:
+5. Run the script:
 
    ```bash
    python app.py
    ```
 
-Script processes websites, generates categories, saves data.
-
+   The script will process websites, generate categories, and save categorized data.
 
 ## Flask Web App (Optional)
 
-For a web interface:
+For a more user-friendly interface, you can set up a Flask web application:
 
 1. Install Flask:
 
@@ -49,18 +49,21 @@ For a web interface:
 
 2. Create `app.py`.
 
-3. Write Flask app code to display categorized data and provide interface.
+3. Write Flask app code to display categorized data and provide an interface for users.
 
-4. Run app:
+4. Run the Flask app:
 
    ```bash
    flask run
    ```
 
-   Access at `http://127.0.0.1:5000/`.
+   Access the app at `http://127.0.0.1:5000/`.
 
 ## Credits
 
-Uses GPT-3.5 from OpenAI for website categorization.
+This project utilizes the GPT-3.5 model from OpenAI for website categorization.
 
-Make sure to replace `website_categorization.py` with your actual script name, and create the Flask app code in a separate `app.py` file.
+Make sure to replace `'app.py'` with your actual script name and create the Flask app code in a separate `'app.py'` file.
+```
+
+Make sure to replace `'YOUR_OPENAI_API_KEY'` with your actual OpenAI API key in the script, and adapt any other parts as needed to match your project's organization and structure.
