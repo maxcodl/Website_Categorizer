@@ -87,15 +87,16 @@ for website in websites:
             
         # Use OpenAI to generate the category
         response = openai.ChatCompletion.create(
-            model=model_engine,
-            temperature=0.5,
-            top_p=0,
-            max_tokens=50,
-            presence_penalty=0,
-            frequency_penalty=0,
-            messages=[{"role": "system", "content": "You are an expert website classifier."},
-                      {"role": "user", "content": prompt}]
-        )
+        model=model_engine,
+        temperature=0.8,
+        top_p=1,
+        max_tokens=30,
+        presence_penalty=0,
+        frequency_penalty=0.57,
+        messages=[{"role": "system", "content": "You are an expert in website categorization."},
+                  {"role": "assistant", "content": "{'website': 'url', 'category': 'Finance'}"},
+                  {"role": "user", "content": prompt}]
+    )
         
         generated_category = response['choices'][0]['message']['content']
 
