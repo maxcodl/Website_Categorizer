@@ -25,7 +25,7 @@ This Python script categorizes a list of websites based on their content using t
 4. Run the script:
 
    ```bash
-   python website_categorization.py
+   python bulk_test.py
    ```
 
    Script processes websites, generates categories, saves data.
