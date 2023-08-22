@@ -33,7 +33,14 @@
   </head>
   <link rel="stylesheet" href="/templates/styles.css" />
   <body>
-    <h1>Category</h1>
+    <h1>Category Result</h1>
+    {% if source == "openai" %}
     <p>{{ category }}</p>
+    {% elif source == "keyword" %}
+    <p>
+      {{"{'website': '" + website + "', 'category': '" + ', '.join(category) +
+      "'}"}}
+    </p>
+    {% endif %}
   </body>
 </html>
