@@ -18,15 +18,19 @@ This Python script categorizes a list of websites based on their content using t
    pip install openai requests beautifulsoup4 openpyxl pandas
    ```
 
-2. Clone the repo by `git clone https://github.com/maxcodl/Website_Categorizer.git`
+2. Clone the repo
 
-3. Replace `openai.api_key` with your API key.
+   ```bash
+   git clone https://github.com/maxcodl/Website_Categorizer.git
+   ```
 
-4. Replace `your_ip` with your IP.
+6. Replace `openai.api_key` with your API key.
 
-5. Add websites to `websites` list.
+7. Replace `your_ip` with your IP.
 
-6. Run the script:
+8. Add websites to `websites` list.
+
+9. Run the script:
 
    ```bash
    python app.py
