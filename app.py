@@ -27,7 +27,7 @@ def categorize_based_on_keywords(text, categories_keywords):
             print(f"For category '{category}', found matching keywords: {matched_keywords}")
             matched_categories.append(category)
         if not matched_categories:
-            print("No keywords found in the text.")
+            print(f"No keywords found for '{category}'.")
     return matched_categories
 
 
@@ -43,6 +43,8 @@ def extract_text_from_website(url):
         if response.status_code == 200:
             soup = BeautifulSoup(response.content, 'html.parser')
             all_text = ' '.join([element.get_text() for element in soup.find_all(['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li', 'span'])])
+            print("Extracted Text:")
+            print(all_text)
             return all_text
         else:
             return None
