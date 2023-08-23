@@ -34,13 +34,15 @@
   <link rel="stylesheet" href="/templates/styles.css" />
   <body>
     <h1>Category Result</h1>
+
     {% if source == "openai" %}
-    <p>{{ category }}</p>
+    <p>{{ category | safe }}</p>
     {% elif source == "keyword" %}
     <p>
-      {{"{'website': '" + website + "', 'category': '" + ', '.join(category) +
-      "'}"}}
+      {{ '{"website": "' + website + '", "category": "' + category + '",
+      "source": "' + source + '"}' }}
     </p>
     {% endif %}
+    <br /><br />
   </body>
 </html>
