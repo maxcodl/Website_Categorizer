@@ -22,7 +22,7 @@ def categorize_based_on_keywords(text, categories_keywords):
     words = set(text.lower().split())
     for category, keywords in categories_keywords.items():
         # Check if each keyword is an entire word in the text
-        matched_keywords = [keyword for keyword in keywords if keyword.lower() in words]
+        matched_keywords = [keyword for keyword in keywords if keyword.lower() in text.lower()]
         if len(matched_keywords) >= 3:
             print(f"For category '{category}', found matching keywords: {matched_keywords}")
             matched_categories.append(category)
@@ -43,6 +43,7 @@ def extract_text_from_website(url):
         if response.status_code == 200:
             soup = BeautifulSoup(response.content, 'html.parser')
             all_text = ' '.join([element.get_text() for element in soup.find_all(['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'li', 'span'])])
+            all_text = ' '.join(all_text.split())
             print("Extracted Text:")
             print(all_text)
             return all_text
@@ -64,7 +65,7 @@ def categorize():
     # Check if the input URL starts with "http" or "www"
     if not url.startswith(('http', 'www')):
         # Assuming it's a hostname without the "https://" prefix
-        url = f"https://{url}"
+        url = f"https://www.{url}"
 
     # Add a delay to allow the website to load
     time.sleep(5) 
@@ -84,6 +85,7 @@ def categorize():
             "Adult": ["Adult", "Porn","Creampie","Lesbian","Hentai","Adult"],
             "Autos & Vehicles": ["Bicycles & Accessories","Bike Parts & Repair","BMX Bikes","Boats & Watercraft","Campers & RVs","Cargo Trucks & Trailers","Classic Vehicles","Commercial Vehicles","Gas Prices & Vehicle Fueling","Hybrid & Alternative Vehicles","Motor Vehicles (By Type)","Motorcycles","Off-Road Vehicles","Trucks & SUVs","Used Vehicles","Vehicle Codes & Driving Laws","Vehicle Licensing & Registration","Vehicle Parts & Accessories","Vehicle Parts & Services","Vehicle Repair & Maintenance","Vehicle Shopping","Vehicle Shows"],
             "Beauty & Fitness": ["Beauty Pageants","Body Art","Cosmetic Procedures","Cosmetology & Beauty Professionals","Face & Body Care","Fashion & Style","Fitness","Hair Care","Spas & Beauty Services","Weight Loss","Cosmetic Surgery","Hygiene & Toiletries","Make-Up & Cosmetics","Perfumes & Fragrances","Skin & Nail Care","Unwanted Body & Facial Hair Removal","Fashion Designers & Collections","Hair Loss","Massage Therapy"],
+            "Article Website": ["min read","1 min read","2 min read","3 min read","4 min read","5 min read","6 min read","7 min read","8 min read","9 min read","10 min read","Medium app"],
             "Business & Industrial": ["Advertising & Marketing","Aerospace & Defense","Agriculture & Forestry","Automotive Industry","Business Education","Business Finance","Business Operations","Business Services","Chemicals Industry","Construction & Maintenance","Energy & Utilities","Hospitality Industry","Industrial Materials & Equipment","Manufacturing","Metals & Mining","Pharmaceuticals & Biotech","Printing & Publishing","Retail Trade","Small Business","Textiles & Nonwovens","Transportation & Logistics","Public Relations","Space Technology","Agricultural Equipment","Forestry","Livestock","Venture Capital","Business Plans & Presentations","Management","Consulting","Corporate Events","E-Commerce Services","Fire & Security Services","Office Services","Office Supplies","Writing & Editing Services","Cleaning Agents","Plastics & Polymers","Building Materials & Supplies","Electricity","Oil & Gas","Renewable & Alternative Energy","Event Planning","Food Service","Heavy Machinery","Precious Metals","Retail Equipment & Technology","MLM & Business Opportunities","Freight & Trucking","Mail & Package Delivery","Maritime Transport","Moving & Relocation","Packaging","Parking","Rail Transport","Urban Transport"]
         }
 
@@ -158,7 +160,6 @@ def categorize():
     print("Response from OpenAI:", response)
 
     return render_template('result.html', website=url, category=chosen_categories, source="openai")
-
 
 
 # Run the Flask app
