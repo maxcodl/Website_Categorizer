@@ -16,7 +16,7 @@ This Python script and Flask web application categorize websites based on their 
 1. Install required packages:
 
    ```bash
-   pip install openai requests beautifulsoup4 openpyxl pandas
+   pip install openai requests beautifulsoup4 openpyxl pandas re
    ```
 
 2. Clone the repository:
