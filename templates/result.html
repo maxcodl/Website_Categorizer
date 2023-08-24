@@ -39,8 +39,8 @@
     <p>{{ category | safe }}</p>
     {% elif source == "keyword" %}
     <p>
-      {{ '{"website": "' + website + '", "category": "' + category + '",
-      "source": "' + source + '"}' }}
+      { "website": "{{ website }}", "category": "{{ category | map('string') |
+      join('", "') }}" }
     </p>
     {% endif %}
     <br /><br />
